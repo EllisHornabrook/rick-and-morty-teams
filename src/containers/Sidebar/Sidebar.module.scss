@@ -1,0 +1,29 @@
+@import '../../sass/variables';
+
+.sidebar {
+    height: 100%;
+    border-right: 4px solid $color-bluegreen;
+    position: fixed;
+    background-color: black;
+    width: 200px;
+    padding-top: 15px;
+}
+
+.team {
+    margin: 20px 35px;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.link {
+    text-decoration: none;
+    color: black;
+    border: 4px solid $color-yellowgreen;
+    padding: 3px;
+    background-image: linear-gradient(-180deg, $color-lightgreen 0%, $color-bluegreen 100%);
+	box-shadow: 0 -0.25rem 1.5rem $color-green inset,
+				0 0.75rem 0.5rem $color-darkgreen inset,
+				0 0.25rem 0.5rem 0 $color-bluegreen inset;
+}

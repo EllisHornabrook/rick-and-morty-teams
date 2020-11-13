@@ -1,0 +1,59 @@
+.card {
+  border: 3px solid black;
+  width: 520px;
+  height: 390px;
+  margin: 10px;
+  padding: 10px 15px;
+  background-image: url("https://i.pinimg.com/originals/37/92/6b/37926bce6c4afda728d5011c3ee9ea0a.jpg");
+  background-position: center;
+  background-size: 100% 100%;
+  border: 2px solid #b4ff30;
+}
+.card .grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: 100%;
+  height: 50%;
+}
+.card .grid h1 {
+  color: white;
+  font-size: 20px;
+  border-top: 2px solid white;
+}
+.card .grid img {
+  width: 160%;
+  height: 130%;
+  border-radius: 50%;
+  margin-top: 41.5%;
+  margin-left: -29.5%;
+  border: 1px solid white;
+}
+.card .grid .iconCont {
+  color: #62ef24;
+  font-size: 22px;
+  display: flex;
+  padding-left: 87%;
+}
+.card .grid .icon {
+  cursor: pointer;
+}
+.card .bottom {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  width: 100%;
+  margin-top: 33.5%;
+  font-size: 18px;
+}
+.card .bottom div {
+  display: flex;
+  flex-direction: column;
+  margin-top: -24.5px;
+}
+.card .bottom div p:nth-child(odd) {
+  text-decoration: underline;
+}
+.card .bottom p {
+  border-left: 2px solid white;
+  padding-left: 8px;
+}

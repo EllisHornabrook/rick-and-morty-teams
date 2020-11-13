@@ -1,0 +1,57 @@
+@import '../../sass/variables';
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        background-color: $color-darkgreen;
+        padding: 5px 0 10px 15px;
+        margin-top: 10px;
+        font-size: 24px;
+        width: 100%;
+        border-bottom: 1px solid black;
+    }
+
+    ul {
+        background-color: $color-lightgreen;
+        width: 100%;
+        padding-bottom: 1px;
+    }
+
+    li {
+        display: flex;
+        justify-content: space-between;
+        padding: 5% 40px;
+        align-items: center;
+        font-size: 16px;
+        font-weight: bold;
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+
+        input {
+            height: 18px;
+            width: 18px;
+        }
+    }
+
+    button {
+        width: 100px;
+        height: 32px;
+        margin-top: 15px;
+        background-color: $color-green;
+        border-color: $color-green;
+        font-size: 18px;
+        font-weight: bold;
+        border-radius: 50px;
+        outline: none;
+    }
+
+    button:hover {
+        background-color: $color-bluegreen;
+        border-color: $color-bluegreen;
+        color: white;
+        text-shadow: 0 0 10px black;
+    }
+}

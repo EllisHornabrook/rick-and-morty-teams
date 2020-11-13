@@ -1,0 +1,40 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("./assets/Fonts/get_schwifty-webfont.woff");
+  src: url("./assets//Fonts/get_schwifty-webfont.woff2") format("woff"), url("./assets/Fonts/get_schwifty.ttf") format("opentype");
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+* ::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+html {
+  background-color: black;
+}
+
+.top {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+  top: 70px;
+  bottom: 0;
+}
+
+.main {
+  position: absolute;
+  left: 245px;
+  top: 100px;
+}
