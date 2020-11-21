@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "./Filters.module.scss";
 
 const Filters = ({filter}) => {
-
     const [gender, setGender] = useState();
     const [status, setStatus] = useState();
     const [species, setSpecies] = useState();
@@ -12,11 +11,9 @@ const Filters = ({filter}) => {
     const handleSpecies = (e) => setSpecies(e.target.value)
 
     const handleFilter = () => {
-        const filterInfo = `gender=${gender}&status=${status}&species=${species}`;
-        console.log(filterInfo);
+        const filterInfo = `gender${gender}&status${status}&species${species}`;
         filter(filterInfo);
     }
-
 
     return (
         <div className={styles.filters}>
@@ -24,23 +21,23 @@ const Filters = ({filter}) => {
             <ul onChange={handleGender}>
                 <li>
                     <p>All</p>
-                    <input type="radio" name="gender" value="" />
+                    <input type="radio" name="gender" value="" defaultChecked />
                 </li>
                 <li>
                     <p>Male</p>
-                    <input type="radio" name="gender" value="male" />
+                    <input type="radio" name="gender" value="=male" />
                 </li>
                 <li>
                     <p>Female</p>
-                    <input type="radio" name="gender" value="female" />
+                    <input type="radio" name="gender" value="=female" />
                 </li>
                 <li>
                     <p>Genderless</p>
-                    <input type="radio" name="gender" value="genderless" />
+                    <input type="radio" name="gender" value="=genderless" />
                 </li>
                 <li>
                     <p>Unknown</p>
-                    <input type="radio" name="gender" value="unknown" />
+                    <input type="radio" name="gender" value="=unknown" />
                 </li>
             </ul>
 
@@ -48,18 +45,18 @@ const Filters = ({filter}) => {
             <ul onChange={handleStatus}>
                 <li>
                     <p>All</p>
-                    <input type="radio" name="status" value="" />
+                    <input type="radio" name="status" value="" defaultChecked />
                 </li>
                 <li><p>Alive</p>
-                    <input type="radio" name="status" value="alive" />
+                    <input type="radio" name="status" value="=alive" />
                 </li>
                 <li>
                     <p>Dead</p>
-                    <input type="radio" name="status" value="dead" />
+                    <input type="radio" name="status" value="=dead" />
                 </li>
                 <li>
                     <p>Unknown</p>
-                    <input type="radio" name="status" value="unknown" />
+                    <input type="radio" name="status" value="=unknown" />
                 </li>
             </ul>
             
@@ -67,15 +64,15 @@ const Filters = ({filter}) => {
             <ul onChange={handleSpecies}>
                 <li>
                     <p>All</p>
-                    <input type="radio" name="species" value="" />
+                    <input type="radio" name="species" value="" defaultChecked />
                 </li>
                 <li>
                     <p>Human</p>
-                    <input type="radio" name="species" value="human" />
+                    <input type="radio" name="species" value="=human" />
                 </li>
                 <li>
                     <p>Alien</p>
-                    <input type="radio" name="species" value="alien" />
+                    <input type="radio" name="species" value="=alien" />
                 </li>
             </ul>
             <button onClick={handleFilter}>FILTER</button>
@@ -84,10 +81,3 @@ const Filters = ({filter}) => {
 };
 
 export default Filters;
-
-
-// const input = isOpen ? <input type="text" placeholder={placeholder} onInput={e => updateSearchText(e.target.value)} /> : null;
-
-// <span className={styles.fa} onClick={() => setIsOpen(!isOpen)}>
-//     <FontAwesomeIcon icon="search" />
-// </span>

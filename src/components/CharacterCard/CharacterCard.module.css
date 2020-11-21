@@ -27,6 +27,7 @@
   margin-top: 41.5%;
   margin-left: -29.5%;
   border: 1px solid white;
+  filter: drop-shadow(0 0 10px white);
 }
 .card .grid .iconCont {
   color: #62ef24;

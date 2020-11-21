@@ -5,24 +5,7 @@ import CharacterList from "../../components/CharacterList/CharacterList";
 import FeedbackPanel from "../../components/FeedbackPanel/FeedbackPanel.jsx";
 
 const Team = (props) => {
-    const [favourites, setFavourites] = useState([]);
-    const { user, toggleFav } = props;
-
-    const fetchTeam = () => {
-        firestore
-            .collection("characters")
-            .get()
-            .then((querySnapshot) => {
-                const favourites = querySnapshot.docs
-                    .filter((doc) => doc.data().uid === user.uid)
-                    .map((doc) => doc.data());
-                    setFavourites(favourites)})
-                    .catch((err) => console.error(err));
-    };
-
-    useEffect(() => {
-        fetchTeam();
-    })
+    const { user, toggleFav, favourites } = props;
     
     const contentJsx = favourites.length ? (
         <CharacterList characters={favourites} toggleFav={toggleFav} user={user} />

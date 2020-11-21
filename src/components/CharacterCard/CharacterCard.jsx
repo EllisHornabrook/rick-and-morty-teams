@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styles from "./CharacterCard.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -6,18 +6,18 @@ const CharacterCard = (props) => {
     const { character, toggleFav, user } = props;
     const { name, image, status, species, gender, origin, isFav } = character;
     const [favState, setFavState] = useState(isFav);
-
+    
     const handleFavClick = (e) => {
         if (user) {
             e.stopPropagation();
             toggleFav(character);
-            setFavState(!isFav);
+            setFavState(!favState);
         } else {
             alert('Please log in using the Google button to add characters to your Team.')
         }
     };
 
-    const teamIcon = (isFav) ? ["fas", "user-check"] : ["far", "user"];
+    const teamIcon = (favState === true) ? ["fas", "user-check"] : ["far", "user"];
 
     return (
         <div className={styles.card}>
