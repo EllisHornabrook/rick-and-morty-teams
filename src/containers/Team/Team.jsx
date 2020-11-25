@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styles from "./Team.module.scss";
-import { firestore } from "../../firebase";
 import CharacterList from "../../components/CharacterList/CharacterList";
 import FeedbackPanel from "../../components/FeedbackPanel/FeedbackPanel.jsx";
 
@@ -11,8 +10,8 @@ const Team = (props) => {
         <CharacterList characters={favourites} toggleFav={toggleFav} user={user} />
         ) : (
         <FeedbackPanel
-          header="No characters"
-          text="Try going back to Characters and choosing your Team."
+          header="No team members"
+          text="Try going back to Characters and choosing your Team"
         />
     );
     

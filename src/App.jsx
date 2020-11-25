@@ -73,7 +73,7 @@ function App() {
         <Sidebar searchFetch={searchFetch} filterFetch={filterFetch} />
       </section>
       <section className={styles.main}>
-        <Routes characters={characters} user={user} />
+        {(user == null) ? (null) : (<Routes characters={characters} user={user} />)}
       </section>
     </>
   );

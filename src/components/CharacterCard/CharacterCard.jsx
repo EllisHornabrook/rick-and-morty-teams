@@ -3,29 +3,25 @@ import styles from "./CharacterCard.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CharacterCard = (props) => {
-    const { character, toggleFav, user } = props;
+    const { character, toggleFav } = props;
     const { name, image, status, species, gender, origin, isFav } = character;
     const [favState, setFavState] = useState(isFav);
-    
-    const handleFavClick = (e) => {
-        if (user) {
-            e.stopPropagation();
-            toggleFav(character);
-            setFavState(!favState);
-        } else {
-            alert('Please log in using the Google button to add characters to your Team.')
-        }
-    };
 
-    const teamIcon = (favState === true) ? ["fas", "user-check"] : ["far", "user"];
+    const handleFavClick = (e) => {
+        e.stopPropagation();
+        toggleFav(character);
+        setFavState(!isFav);
+    };
+    
+    const teamIcon = favState ? ["fas", "user-check"] : ["far", "user"];
 
     return (
         <div className={styles.card}>
             <div className={styles.grid}>
                 <h1>{name}</h1>
-                <img src={image} />
-                <span className={styles.iconCont} onClick={handleFavClick}>
-                    <FontAwesomeIcon icon={teamIcon} className={styles.icon} />
+                <img src={image} alt="character" />
+                <span className={styles.iconCont}>
+                    <FontAwesomeIcon icon={teamIcon} className={styles.icon} onClick={handleFavClick} />
                 </span>
             </div>
             <div className={styles.bottom}>

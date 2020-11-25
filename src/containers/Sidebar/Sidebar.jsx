@@ -20,11 +20,11 @@ const Sidebar = (props) => {
 
     const search = (searchInput) => {
         searchFetch(searchInput);
-    }
+    };
 
     const filter = (filterInput) => {
         filterFetch(filterInput);
-    }
+    };
 
     return (
         <aside className={styles.sidebar}>
