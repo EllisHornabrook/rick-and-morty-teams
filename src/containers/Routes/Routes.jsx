@@ -10,15 +10,18 @@ const Routes = (props) => {
     const { characters, user } = props;
 
     const addToTeam = (character) => {
-        if (favourites.length >= 6) {
-            alert('You are only allowed a maximum of 6 characters in your team.')
+        if (user) {
+            if (favourites.length >= 6) {
+                alert('You are only allowed a maximum of 6 characters in your team.')
+            } else {
+                firestore
+                .collection("teams")
+                .doc(user.uid + character.id)
+                .set({...character, uid: user.uid})
+                .catch((err) => console.error(err));
+            }
         } else {
-            firestore
-            .collection("teams")
-            .doc(user.uid + character.id)
-            .set({...character, uid: user.uid})
-            .then(fetchTeam())
-            .catch((err) => console.error(err));
+            alert('Please log in using the Google button to add characters to your Team.')
         };
     };
 
@@ -27,66 +30,40 @@ const Routes = (props) => {
             .collection("teams")
             .where("id", "==", character.id)
             .where("uid", "==", user.uid);
-  
-        query.get().then((querySnapshot) => {
-            querySnapshot.forEach((doc) => doc.ref.delete());
-            fetchTeam();
-        });
-    };
-
-    const fetchTeam = () => {
-        firestore
-            .collection("teams")
-            .get()
-            .then((querySnapshot) => {
-                const favourites = querySnapshot.docs
-                    .filter((doc) => doc.data().uid === user.uid)
-                    .map((doc) => doc.data());
-                setFavourites(favourites)
-                checkTeam()
-            })
-            .catch((err) => console.error(err));
-    };
-
-    const toggleFav = (character) => {
-        if (user) {
-            character.isFav = !character.isFav;
-            character.isFav ? addToTeam(character) : removeFromTeam(character);
-        } else {
-            alert('Please log in using the Google button to add characters to your Team.')
-        };
-    };
-    
-    const checkTeam = () => {
-        characters.forEach((character) => {
-            const favArr = favourites.filter((favourite) => {
-                return favourite.name === character.name
-            });
-            if (favArr.length) character.isFav = true;
-            else character.isFav = false;
+            query.get().then((querySnapshot) => {
+                querySnapshot.forEach((doc) => doc.ref.delete());
         });
     };
 
     useEffect(() => {
-        fetchTeam();
-    }, []);
-
-    useEffect(() => {
-        checkTeam();
-    }, [characters, favourites]);
+        const fetchTeam = () => {
+            if (user) {
+                firestore
+                .collection("teams")
+                .get()
+                .then((querySnapshot) => {
+                    const favourites = querySnapshot.docs
+                        .filter((doc) => doc.data().uid === user.uid)
+                        .map((doc) => doc.data());
+                    setFavourites(favourites)
+                })
+                .catch((err) => console.error(err));
+            }
+        }
+        fetchTeam()
+    }, [user, favourites]);
 
     return (
         <Router>
             <Dashboard
                 path="/"
                 characters={characters}
-                toggleFav={toggleFav}
+                addToTeam={addToTeam}
             />
             <Team
                 path="/my-team"
-                user={user}
-                toggleFav={toggleFav}
                 favourites={favourites}
+                removeFromTeam={removeFromTeam}
             />
             <NotFound default />
         </Router>

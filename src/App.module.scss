@@ -20,25 +20,24 @@ html {
     background-color: black;
 }
 
-.top {
-    position: absolute;
+.header {
+    position: relative;
+    top: 0;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 70px;
     z-index: 1;
 }
-.left {
-    position: absolute;
+
+.sidebar {
+    position: relative;
     left: 0;
-    top: 70px;
     bottom: 0;
-}
-.main {
-    position: absolute;
-    left: 245px;
-    top: 100px;
+    width: 200px;
 }
 
-
- 
-
+.routes {
+    position: relative;
+    margin-left: 200px;
+    padding: 15px 0;
+}

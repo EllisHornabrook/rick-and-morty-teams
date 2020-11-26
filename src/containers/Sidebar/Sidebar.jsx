@@ -5,9 +5,9 @@ import Filters from "../../components/Filters/Filters"
 import { Link } from "@reach/router";
 
 const Sidebar = (props) => {
-    const { searchFetch, filterFetch } = props;
+    const { searchFetch, filterFetch, user } = props;
     const [isOnPage, setIsOnPage] = useState(false);
-
+  
     const pageChange = isOnPage ? (
         <Link to="/" className={styles.link}>
             <span>Characters</span>
@@ -30,9 +30,11 @@ const Sidebar = (props) => {
         <aside className={styles.sidebar}>
             <Search search={search} />
             <Filters filter={filter} />
-            <span className={styles.team} onClick={() => setIsOnPage(!isOnPage)}>
-                {pageChange}
-            </span>
+            {(user == null) ? (null) : (
+                <span className={styles.team} onClick={() => setIsOnPage(!isOnPage)}>
+                    {pageChange}
+                </span>
+            )}
         </aside>
     );
 };

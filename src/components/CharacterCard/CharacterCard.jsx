@@ -1,19 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./CharacterCard.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const CharacterCard = (props) => {
-    const { character, toggleFav } = props;
-    const { name, image, status, species, gender, origin, isFav } = character;
-    const [favState, setFavState] = useState(isFav);
+    const { character, toggleFav, teamIcon } = props;
+    const { name, image, status, species, gender, origin } = character;
 
-    const handleFavClick = (e) => {
-        e.stopPropagation();
+    const handleFavClick = () => {
         toggleFav(character);
-        setFavState(!isFav);
     };
-    
-    const teamIcon = favState ? ["fas", "user-check"] : ["far", "user"];
 
     return (
         <div className={styles.card}>

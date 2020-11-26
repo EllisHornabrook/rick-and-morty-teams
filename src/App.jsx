@@ -66,14 +66,14 @@ function App() {
 
   return (
     <>
-      <section className={styles.top}>
+      <section className={styles.header}>
         <Header user={user} signIn={signIn} signOut={signOut} />
       </section>
-      <section className={styles.left}>
-        <Sidebar searchFetch={searchFetch} filterFetch={filterFetch} />
+      <section className={styles.sidebar}>
+        <Sidebar searchFetch={searchFetch} filterFetch={filterFetch} user={user} />
       </section>
-      <section className={styles.main}>
-        {(user == null) ? (null) : (<Routes characters={characters} user={user} />)}
+      <section className={styles.routes}>
+        <Routes characters={characters} user={user} />
       </section>
     </>
   );
