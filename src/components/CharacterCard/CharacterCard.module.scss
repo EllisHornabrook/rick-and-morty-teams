@@ -31,6 +31,12 @@
             margin-left: -29.5%;
             border: 1px solid white;
             filter: drop-shadow(0 0 10px white);
+
+            @media not all and (min-resolution:.001dpcm) {
+                @supports (-webkit-appearance:none) { 
+                height: 100%;
+                }
+            }
         }
 
         .iconCont {
